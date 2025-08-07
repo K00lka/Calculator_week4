@@ -13,6 +13,10 @@ function Clear() {
 function Operate() {
     let input = document.getElementById('mathElements');
     let expr = input.value.replace(/x/g, '*');
+    if (/\/\s*0(?!\d)/.test(expr)) {
+        input.value = 'Are you 5?';
+        return;
+    }
     if (/^[0-9+\-*/.]+$/.test(expr)) {
         try {
             let result = Function('"use strict";return (' + expr + ')')();
@@ -23,6 +27,7 @@ function Operate() {
     } else {
         input.value = 'Whoopsie!';
     }
+    
 }
 
 document.onkeydown('keadown', function(event) {

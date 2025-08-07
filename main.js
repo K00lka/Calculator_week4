@@ -3,10 +3,7 @@ function getElements(num){
     n.value += num;
 }
 
-function Backspace() {
-    let input = document.getElementById("mathElements");
-    input.value = input.value.slice(0, -1);
-}
+
 
 function Clear() {
     let input = document.getElementById("mathElements");
@@ -33,8 +30,6 @@ document.onkeydown('keadown', function(event) {
     const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/'];
     if (validKeys.includes(key)) {
         getElements(key === '*' ? 'x' : key);
-    } else if (key === 'backspace') {
-        Backspace();
     } else if (key  === 'equals') {
         Operate();
     } else if (key === 'clear') {

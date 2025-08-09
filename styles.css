@@ -12,10 +12,10 @@ td{
     table-layout: fixed;
     
     width: 70%;
-    height: 90%;
+    height: 70%;
     border: 1px solid #CECCCC;
     border-radius: 10px;
-    margin: 20px;
+   
     
     background-color: #CECCCC;
 
@@ -43,9 +43,17 @@ input[type="text"]{
     font-size: 5vh;
      color: #9D6381;
 }
-body{
+main{
     height: 100vh;
     display: flex;
     justify-content: center;
 }
 
+
+header{
+    text-align: center;
+    color: #9D6381;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height:10vh
+}

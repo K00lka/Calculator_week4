@@ -1,6 +1,14 @@
 function getElements(num){
+    let values = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '.'];
+    if (!values.includes(num)) {
+        return;
+    }
     let n = document.getElementById("mathElements");
     n.value += num;
+    if (n.value.length > 18) {
+        n.value = n.value.slice(0, 18) + '...';
+        
+    }
 }
 
 
@@ -35,18 +43,25 @@ function Operate() {
     
 }
 
-document.onkeydown('keadown', function(event) {
+document.addEventListener('keydown', function(event) {
     const key = event.key;
     const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/'];
     if (validKeys.includes(key)) {
         getElements(key === '*' ? 'x' : key);
-    } else if (key  === 'equals') {
-        Operate();
-    } else if (key === 'clear') {
-        Clear();
+        event.preventDefault();
     } else if (key === 'Backspace') {
         Backspace();
+        event.preventDefault();
+    } else if (key === 'Enter') {
+        Operate();
+        event.preventDefault();   
+    } else if (key === 'Escape') { } else if (key === 'Escape') {
+        Clear();        Clear();
+        event.preventDefault();        
     }
 
-});
+
+
+});  
+
 

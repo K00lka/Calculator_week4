@@ -10,6 +10,11 @@ function Clear() {
     input.value = '';
 }
 
+function Backspace() {
+    let input = document.getElementById("mathElements");
+    input.value = input.value.slice(0, -1);
+}
+
 function Operate() {
     let input = document.getElementById('mathElements');
     let expr = input.value.replace(/x/g, '*');
@@ -39,6 +44,8 @@ document.onkeydown('keadown', function(event) {
         Operate();
     } else if (key === 'clear') {
         Clear();
+    } else if (key === 'Backspace') {
+        Backspace();
     }
 
 });

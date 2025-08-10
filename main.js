@@ -4,26 +4,51 @@ function getElements(num){
         return;
     }
     let n = document.getElementById("mathElements");
+    let lastChar = n.value.slice(-1);
+    if (['+', '-', '*', '/', '.'].includes(num)) {
+        if (lastChar === num) {
+            return; 
+        }
+        if (num === '.' && /\.\d*$/.test(n.value)) {
+            return;
+        }
+        if (n.value === '' && num !== '-') {
+            return;
+        }
+    }
+    if (num === '0') {
+        // If the value is empty or last char is operator, allow a single zero
+        if ((n.value === '' || ['+', '-', '*', '/', '.'].includes(lastChar))) {
+            n.value += num;
+            return;
+        }
+        // If last char is zero and it's at the start or after operator, prevent more zeros
+        let parts = n.value.split(/[\+\-\*\/]/);
+        let lastPart = parts[parts.length - 1];
+        if (/^0+$/.test(lastPart)) {
+            return;
+        }
+    }
+
     n.value += num;
-    if (n.value.length > 18) {
-        n.value = n.value.slice(0, 18) + '...';
-        
+    if (n.value.length > 10) {
+        n.value = n.value.slice(0, 10) + '...';
     }
 }
 
 
 
-function Clear() {
+function clear() {
     let input = document.getElementById("mathElements");
     input.value = '';
 }
 
-function Backspace() {
+function backspace() {
     let input = document.getElementById("mathElements");
     input.value = input.value.slice(0, -1);
 }
 
-function Operate() {
+function operate() {
     let input = document.getElementById('mathElements');
     let expr = input.value.replace(/x/g, '*');
     if (/\/\s*0(?!\d)/.test(expr)) {
@@ -33,6 +58,9 @@ function Operate() {
     if (/^[0-9+\-*/.]+$/.test(expr)) {
         try {
             let result = Function('"use strict";return (' + expr + ')')();
+            if (typeof result === "number" && !Number.isInteger(result)) {
+                result = Number(result.toFixed(4));
+            }
             input.value = result;
         } catch {
             input.value = 'Whoopsie!';
@@ -40,7 +68,6 @@ function Operate() {
     } else {
         input.value = 'Whoopsie!';
     }
-    
 }
 
 document.addEventListener('keydown', function(event) {
@@ -50,18 +77,18 @@ document.addEventListener('keydown', function(event) {
         getElements(key === '*' ? 'x' : key);
         event.preventDefault();
     } else if (key === 'Backspace') {
-        Backspace();
+        backspace();
         event.preventDefault();
     } else if (key === 'Enter') {
-        Operate();
+        operate();
         event.preventDefault();   
     } else if (key === 'Escape') { } else if (key === 'Escape') {
-        Clear();        Clear();
+        clear();        clear();
         event.preventDefault();        
     }
+});
 
 
 
-});  
 
 

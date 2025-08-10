@@ -13,35 +13,35 @@
                         <input type="text" id="mathElements" onkeyup="getElements(event.key)" readonly>
                     </td>
                     <td>  
-                        <input type="button" value='⌫' onclick="Backspace()" id="backspace">
+                        <button onclick="backspace()" id="backspace" class="button button-hover">⌫</button>
                     </td>
                     <td>
-                        <input type="button" value='C' onclick="Clear()" id="clear">
+                        <button onclick="clear()" id="clear" class="button button-hover">C</button>
                     </td> 
                 </tr>
                 <tr class="buttons" alt="calculator-buttons">
-                    <td><input type="button" value="E" onclick="Operate()" id="equals"></td>
-                    <td><input type="button" value='.' onclick="getElements('.')" id="backspace"></td>
-                    <td><input type="button" value="+" onclick="getElements('+')"></td>
-                    <td><input type="button" value="-" onclick="getElements('-')"></td>
+                    <td><button onclick="operate(), colorChange()" id="equals" class="button button-hover">E</button></td>
+                    <td><button onclick="getElements('.'), colorChange()" id="dot" class="button button-hover">.</button></td>
+                    <td><button onclick="getElements('+'), colorChange()" class="button button-hover">+</button></td>
+                    <td><button onclick="getElements('-'), colorChange()" class="button button-hover">-</button></td>
                 </tr> 
                 <tr class="buttons">  
-                    <td><input type="button" value="1" onclick="getElements('1')"></td>
-                    <td><input type="button" value="2" onclick="getElements('2')"></td>
-                    <td><input type="button" value="3" onclick="getElements('3')"></td>
-                    <td><input type="button" value="*" onclick="getElements('*')"></td>
+                    <td><button onclick="getElements('1'), colorChange()" class="button button-hover">1</button></td>
+                    <td><button onclick="getElements('2'), colorChange()" class="button button-hover">2</button></td>
+                    <td><button onclick="getElements('3'), colorChange()" class="button button-hover">3</button></td>
+                    <td><button onclick="getElements('*')" class="button button-hover">*</button></td>
                 </tr> 
                 <tr class="buttons">
-                    <td><input type="button" value="4" onclick="getElements('4')"></td>
-                    <td><input type="button" value="5" onclick="getElements('5')"></td>
-                    <td><input type="button" value="6" onclick="getElements('6')"></td>
-                    <td><input type="button" value="/" onclick="getElements('/')"></td>
+                    <td><button onclick="getElements('4')" class="button button-hover">4</button></td>
+                    <td><button onclick="getElements('5')" class="button button-hover">5</button></td>
+                    <td><button onclick="getElements('6')" class="button button-hover">6</button></td>
+                    <td><button onclick="getElements('/')" class="button button-hover">/</button></td>
                 </tr>
                 <tr class="buttons">
-                    <td><input type="button" value="7" onclick="getElements('7')"></td>
-                    <td><input type="button" value="8" onclick="getElements('8')"></td>
-                    <td><input type="button" value="9" onclick="getElements('9')"></td>
-                    <td><input type="button" value="0" onclick="getElements('0')"></td>
+                    <td><button onclick="getElements('7')" class="button button-hover">7</button></td>
+                    <td><button onclick="getElements('8')" class="button button-hover">8</button></td>
+                    <td><button onclick="getElements('9')" class="button button-hover">9</button></td>
+                    <td><button onclick="getElements('0')" class="button button-hover">0</button></td>
                 </tr>         
             </table>
         </main>
